@@ -29,23 +29,21 @@ npm run dev
 
 Cada `push` na branch `main` publica o site no GitHub Pages ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)). O domínio é definido em `public/CNAME`.
 
-### DNS do domínio (registro.br)
+### DNS do domínio
 
-Na zona DNS de `anagayer.com.br`:
+O `anagayer.com.br` usa o DNS da **Wix** (`ns0.wixdns.net` / `ns1.wixdns.net`) e hoje aponta para um site Wix. Para apontar para este site, edite os registros em **Wix → Domínios → anagayer.com.br → Gerenciar registros DNS**:
 
-| Tipo | Nome | Valor |
+| Tipo | Host | Valor |
 | --- | --- | --- |
 | A | @ | 185.199.108.153 |
 | A | @ | 185.199.109.153 |
 | A | @ | 185.199.110.153 |
 | A | @ | 185.199.111.153 |
-| AAAA | @ | 2606:50c0:8000::153 |
-| AAAA | @ | 2606:50c0:8001::153 |
-| AAAA | @ | 2606:50c0:8002::153 |
-| AAAA | @ | 2606:50c0:8003::153 |
 | CNAME | www | pmarodinn.github.io |
 
-Quando o DNS propagar, ative **Enforce HTTPS** em *Settings → Pages* do repositório.
+Apague os registros A antigos da Wix no `@`. Se a Wix não deixar editar, outra opção é trocar os servidores DNS no registro.br para os do próprio registro.br e criar ali os mesmos registros, mais os AAAA `2606:50c0:8000::153` a `2606:50c0:8003::153`.
+
+Quando o DNS propagar (de minutos a algumas horas), ative **Enforce HTTPS** em *Settings → Pages* do repositório.
 
 ## Estrutura
 
