@@ -27,7 +27,7 @@ npm run dev
 
 ## Publicação
 
-Cada `push` na branch `main` publica o site no GitHub Pages ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)). O endereço principal é `www.anagayer.com.br` (definido em `public/CNAME` e em *Settings → Pages*); `anagayer.com.br` redireciona para ele.
+Cada `push` na branch `main` publica o site no GitHub Pages ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)). O endereço principal é `anagayer.com.br` (definido em `public/CNAME` e em *Settings → Pages*); `www.anagayer.com.br` redireciona para ele.
 
 ### DNS do domínio
 
