@@ -7,7 +7,6 @@ import Opening from './sections/Opening'
 import Pieces from './sections/Pieces'
 import Film from './sections/Film'
 import Circle from './sections/Circle'
-import Engraving from './sections/Engraving'
 import Invitation from './sections/Invitation'
 import Atelier from './sections/Atelier'
 import Footer from './sections/Footer'
@@ -55,7 +54,6 @@ export default function App() {
         <Film id="gesto" data={filmGesto} film={films.gesto} variant="gesto" />
         <Circle />
         <Film id="noite" data={filmNoite} film={films.noite} variant="noite" align="right" />
-        <Engraving name={name} setName={setName} />
         <Invitation name={name} setName={setName} />
         <Atelier />
       </main>

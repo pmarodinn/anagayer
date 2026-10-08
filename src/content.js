@@ -33,7 +33,7 @@ export const hero = {
   scroll: 'Role para abrir',
   phases: [
     { big: ['Não se compra.'], small: '' },
-    { big: ['Recebe-se.'], small: 'Uma caixa. Um número. Um nome.' },
+    { big: ['Recebe-se.'], small: 'Por convite. Apenas.' },
   ],
   specs: [
     { k: 'Tampa', v: 'Papel algodão, logo em hot stamping' },
@@ -43,53 +43,20 @@ export const hero = {
   ],
 }
 
+// Galeria das peças: só as fotos, sem nomes.
+// `alt` é lido apenas por leitores de tela. `tint` é o tom que o fundo assume.
 export const pieces = {
   index: '01',
   label: 'As Peças',
   intro: ['Nove peças.', 'Nenhuma igual.'],
+  text: 'Cada caixa reúne nove doces, feitos à mão no dia da entrega.',
   items: [
-    {
-      ref: 'Nº 01',
-      name: 'Copa',
-      line: 'Chocolate branco, framboesa e mirtilo.',
-      img: 'copa',
-      w: 667,
-      h: 828,
-      sizes: [667],
-      tint: '#ebe2d6',
-      specs: [
-        ['Composição', 'Chocolate branco, frutas vermelhas'],
-        ['Acabamento', 'Copa moldada à mão'],
-      ],
-    },
-    {
-      ref: 'Nº 02',
-      name: 'Folha',
-      line: 'Brigadeiro branco, folha modelada à mão.',
-      img: 'folha',
-      w: 1600,
-      h: 2012,
-      sizes: [900, 1600],
-      tint: '#f3e3d9',
-      specs: [
-        ['Composição', 'Brigadeiro branco, açúcar cristal'],
-        ['Acabamento', 'Folha modelada peça a peça'],
-      ],
-    },
-    {
-      ref: 'Nº 03',
-      name: 'Coração',
-      line: 'Chocolate trançado, folha de ouro 24k.',
-      img: 'coracao',
-      w: 1600,
-      h: 1945,
-      sizes: [900, 1600],
-      tint: '#eeedea',
-      specs: [
-        ['Composição', 'Chocolate trançado, ouro 24k'],
-        ['Acabamento', 'Ouro aplicado com pinça'],
-      ],
-    },
+    { img: 'copa', w: 667, h: 828, sizes: [667], tint: '#ebe2d6', alt: 'Copa de chocolate branco com framboesas e mirtilos' },
+    { img: 'pavlova', w: 1536, h: 2752, sizes: [900, 1536], tint: '#ebeaea', alt: 'Pequenas pavlovas com frutas vermelhas sobre mármore' },
+    { img: 'folha', w: 1600, h: 2012, sizes: [900, 1600], tint: '#f3e3d9', alt: 'Brigadeiro branco com folha modelada à mão' },
+    { img: 'cones', w: 1536, h: 2752, sizes: [900, 1536], tint: '#ddd4ca', alt: 'Cones de chocolate dentro de uma cúpula em mosaico' },
+    { img: 'coracao', w: 1600, h: 1945, sizes: [900, 1600], tint: '#eeedea', alt: 'Coração de chocolate trançado recebendo folha de ouro' },
+    { img: 'casquinha', w: 1536, h: 2752, sizes: [900, 1536], tint: '#e4e1e2', alt: 'Morangos açucarados em copinhos de chocolate' },
   ],
 }
 
@@ -112,22 +79,13 @@ export const circle = {
   sub: 'Alguém a concede a você.',
   steps: [
     { n: 'I', t: 'Receba o convite', d: 'De quem já pertence ao círculo.' },
-    { n: 'II', t: 'Receba a caixa', d: 'Numerada, com o seu nome.' },
+    { n: 'II', t: 'Receba a caixa', d: 'Feita à mão, entregue no dia.' },
     { n: 'III', t: 'Conceda três convites', d: 'Apenas três. Escolha bem.' },
   ],
 }
 
-export const engraving = {
-  index: '03',
-  label: 'A Tampa',
-  title: ['Seu nome', 'na tampa.'],
-  sub: 'Cada caixa é numerada e leva, em hot stamping, o nome de quem a recebe.',
-  placeholder: 'Escreva seu nome',
-  after: 'Abra devagar. Estarão olhando.',
-}
-
 export const invitation = {
-  index: '04',
+  index: '03',
   label: 'Convite',
   title: ['Solicitar', 'convite'],
   tabs: ['Tenho um código', 'Lista de espera'],
@@ -136,7 +94,7 @@ export const invitation = {
 }
 
 export const atelier = {
-  index: '05',
+  index: '04',
   label: 'Encomendas',
   title: 'Também sob encomenda.',
   text: 'Casamentos, celebrações e presentes. Em pequenas quantidades, sempre à mão.',
@@ -148,6 +106,5 @@ export const nav = [
   { id: 'caixa', label: 'A Caixa' },
   { id: 'pecas', label: 'As Peças' },
   { id: 'circulo', label: 'O Círculo' },
-  { id: 'tampa', label: 'A Tampa' },
   { id: 'encomendas', label: 'Encomendas' },
 ]
