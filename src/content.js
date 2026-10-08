@@ -43,7 +43,7 @@ export const hero = {
   ],
 }
 
-// Galeria das peças: só as fotos, sem nomes.
+// Galeria das peças: sem nomes — numeração, ingredientes e acabamento.
 // `alt` é lido apenas por leitores de tela. `tint` é o tom que o fundo assume.
 export const pieces = {
   index: '01',
@@ -51,12 +51,42 @@ export const pieces = {
   intro: ['Nove peças.', 'Nenhuma igual.'],
   text: 'Cada caixa reúne nove doces, feitos à mão no dia da entrega.',
   items: [
-    { img: 'copa', w: 667, h: 828, sizes: [667], tint: '#ebe2d6', alt: 'Copa de chocolate branco com framboesas e mirtilos' },
-    { img: 'pavlova', w: 1536, h: 2752, sizes: [900, 1536], tint: '#ebeaea', alt: 'Pequenas pavlovas com frutas vermelhas sobre mármore' },
-    { img: 'folha', w: 1600, h: 2012, sizes: [900, 1600], tint: '#f3e3d9', alt: 'Brigadeiro branco com folha modelada à mão' },
-    { img: 'cones', w: 1536, h: 2752, sizes: [900, 1536], tint: '#ddd4ca', alt: 'Cones de chocolate dentro de uma cúpula em mosaico' },
-    { img: 'coracao', w: 1600, h: 1945, sizes: [900, 1600], tint: '#eeedea', alt: 'Coração de chocolate trançado recebendo folha de ouro' },
-    { img: 'casquinha', w: 1536, h: 2752, sizes: [900, 1536], tint: '#e4e1e2', alt: 'Morangos açucarados em copinhos de chocolate' },
+    {
+      img: 'copa', w: 667, h: 828, sizes: [667], tint: '#ebe2d6',
+      alt: 'Copa de chocolate branco com framboesas e mirtilos',
+      line: 'Chocolate branco, framboesa e mirtilo.',
+      specs: [['Composição', 'Chocolate branco, frutas vermelhas'], ['Acabamento', 'Copa moldada à mão']],
+    },
+    {
+      img: 'pavlova', w: 1536, h: 2752, sizes: [900, 1536], tint: '#ebeaea',
+      alt: 'Pequenas pavlovas com frutas vermelhas sobre mármore',
+      line: 'Merengue, creme e frutas vermelhas.',
+      specs: [['Composição', 'Merengue, creme, framboesa, mirtilo'], ['Acabamento', 'Merengue modelado à mão']],
+    },
+    {
+      img: 'folha', w: 1600, h: 2012, sizes: [900, 1600], tint: '#f3e3d9',
+      alt: 'Brigadeiro branco com folha modelada à mão',
+      line: 'Brigadeiro branco, folha modelada à mão.',
+      specs: [['Composição', 'Brigadeiro branco, açúcar cristal'], ['Acabamento', 'Folha modelada peça a peça']],
+    },
+    {
+      img: 'cones', w: 1536, h: 2752, sizes: [900, 1536], tint: '#ddd4ca',
+      alt: 'Cones de chocolate dentro de uma cúpula em mosaico',
+      line: 'Cone crocante, creme de avelã e cacau.',
+      specs: [['Composição', 'Cone crocante, creme de avelã'], ['Acabamento', 'Pétala de chocolate e pérola de açúcar']],
+    },
+    {
+      img: 'coracao', w: 1600, h: 1945, sizes: [900, 1600], tint: '#eeedea',
+      alt: 'Coração de chocolate trançado recebendo folha de ouro',
+      line: 'Chocolate trançado, folha de ouro 24k.',
+      specs: [['Composição', 'Chocolate trançado, ouro 24k'], ['Acabamento', 'Ouro aplicado com pinça']],
+    },
+    {
+      img: 'casquinha', w: 1536, h: 2752, sizes: [900, 1536], tint: '#e4e1e2',
+      alt: 'Morangos açucarados em copinhos de chocolate',
+      line: 'Chocolate amargo e morango fresco.',
+      specs: [['Composição', 'Casquinha de chocolate, morango'], ['Acabamento', 'Morango polvilhado com açúcar']],
+    },
   ],
 }
 

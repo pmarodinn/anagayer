@@ -3,19 +3,10 @@ import { useGSAP } from '@gsap/react'
 import { gsap, ScrollTrigger } from '../lib/scroll'
 import { pieces } from '../content'
 
-// Ritmo editorial: altura (vh), deslocamento vertical (vh) e profundidade de cada foto
-const RHYTHM = [
-  { h: 66, y: -3, depth: 1 },
-  { h: 56, y: 7, depth: 1.5 },
-  { h: 62, y: -6, depth: 0.7 },
-  { h: 70, y: 2, depth: 1.2 },
-  { h: 54, y: -2, depth: 1.7 },
-  { h: 64, y: 5, depth: 0.9 },
-]
-
 const pad = (n) => String(n).padStart(2, '0')
 
-// Galeria horizontal: a rolagem vertical folheia as fotos como um catálogo, sem legendas.
+// Galeria horizontal: a rolagem vertical folheia as peças como um catálogo.
+// Sem nomes — cada peça traz só numeração, ingredientes e acabamento.
 export default function Pieces() {
   const ref = useRef()
   const sticky = useRef()
@@ -33,7 +24,7 @@ export default function Pieces() {
       ScrollTrigger.addEventListener('refreshInit', setHeight)
 
       const base = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim() || '#f3eee6'
-      const tint = gsap.utils.interpolate([base, ...pieces.items.map((p) => p.tint), base])
+      const tint = gsap.utils.interpolate([base, ...pieces.items.map((p) => p.tint), pieces.items[count - 1].tint])
 
       const move = gsap.to(track.current, {
         x: () => -distance(),
@@ -51,27 +42,26 @@ export default function Pieces() {
         },
       })
 
-      gsap.utils.toArray('.plate').forEach((el, i) => {
-        const frame = el.querySelector('.plate__img')
+      gsap.utils.toArray('.spread').forEach((sp) => {
+        const frame = sp.querySelector('.spread__img')
         const img = frame.querySelector('img')
-        const depth = RHYTHM[i % RHYTHM.length].depth
-        // revelação em cortina + leve zoom de saída
+        const text = sp.querySelectorAll('.spread__text > *')
         gsap
-          .timeline({ scrollTrigger: { trigger: el, containerAnimation: move, start: 'left 98%', end: 'left 58%', scrub: true } })
-          .to(frame, { clipPath: 'inset(0% 0 0% 0)', ease: 'power2.out', duration: 0.7 }, 0)
+          .timeline({
+            scrollTrigger: { trigger: sp, containerAnimation: move, start: 'left 92%', end: 'left 30%', scrub: true },
+          })
+          .to(frame, { clipPath: 'inset(0 0 0% 0)', ease: 'power2.out', duration: 0.6 }, 0)
           .to(img, { scale: 1, ease: 'power2.out', duration: 1 }, 0)
-          .from(el.querySelector('.plate__n'), { opacity: 0, y: 12, duration: 0.3 }, 0.5)
-        // profundidade: cada foto atravessa a tela num ritmo vertical próprio
-        gsap.fromTo(
-          el,
-          { yPercent: 4 * depth },
-          { yPercent: -4 * depth, ease: 'none', scrollTrigger: { trigger: el, containerAnimation: move, start: 'left right', end: 'right left', scrub: true } },
-        )
-        // paralaxe da imagem dentro da moldura
+          .from(text, { opacity: 0, y: 30, stagger: 0.08, duration: 0.4, ease: 'power2.out' }, 0.3)
+        // leve paralaxe da imagem dentro da moldura
         gsap.fromTo(
           img,
-          { xPercent: -3 },
-          { xPercent: 3, ease: 'none', scrollTrigger: { trigger: el, containerAnimation: move, start: 'left right', end: 'right left', scrub: true } },
+          { xPercent: -4 },
+          {
+            xPercent: 4,
+            ease: 'none',
+            scrollTrigger: { trigger: sp, containerAnimation: move, start: 'left right', end: 'right left', scrub: true },
+          },
         )
       })
 
@@ -105,34 +95,42 @@ export default function Pieces() {
             <p>{pieces.text}</p>
           </div>
 
-          {pieces.items.map((it, i) => {
-            const r = RHYTHM[i % RHYTHM.length]
-            return (
-              <figure className="plate" key={it.img} style={{ '--h': `${r.h}vh`, '--y': `${r.y}vh` }}>
-                <div className="plate__img" style={{ aspectRatio: `${it.w} / ${it.h}` }}>
-                  <picture>
-                    <source
-                      type="image/webp"
-                      srcSet={it.sizes.map((s) => `/media/${it.img}-${s}.webp ${s}w`).join(', ')}
-                      sizes={`(max-width: 860px) 70vw, ${Math.round((r.h * it.w) / it.h)}vh`}
-                    />
-                    <img
-                      src={`/media/${it.img}-${it.sizes[it.sizes.length - 1]}.jpg`}
-                      alt={it.alt}
-                      width={it.w}
-                      height={it.h}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </picture>
+          {pieces.items.map((it, i) => (
+            <article className="spread" key={it.img}>
+              <div className="spread__img" style={{ aspectRatio: `${it.w} / ${it.h}` }}>
+                <picture>
+                  <source
+                    type="image/webp"
+                    srcSet={it.sizes.map((s) => `/media/${it.img}-${s}.webp ${s}w`).join(', ')}
+                    sizes="(max-width: 860px) 80vw, 60vh"
+                  />
+                  <img
+                    src={`/media/${it.img}-${it.sizes[it.sizes.length - 1]}.jpg`}
+                    alt={it.alt}
+                    width={it.w}
+                    height={it.h}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+              </div>
+              <div className="spread__text">
+                <div className="spread__ref label">
+                  <span>Nº {pad(i + 1)}</span>
+                  <span>Ana Gayer</span>
                 </div>
-                <figcaption className="plate__n label" aria-hidden="true">
-                  {pad(i + 1)}
-                  <span>/ {pad(count)}</span>
-                </figcaption>
-              </figure>
-            )
-          })}
+                <h3 className="display spread__line">{it.line}</h3>
+                <dl className="spread__specs">
+                  {it.specs.map(([k, v]) => (
+                    <div key={k}>
+                      <dt className="label">{k}</dt>
+                      <dd>{v}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </article>
+          ))}
           <div className="pieces__end" />
         </div>
 
@@ -141,9 +139,7 @@ export default function Pieces() {
           <span className="bar">
             <i ref={bar} />
           </span>
-          <span>
-            01 — {pad(count)}
-          </span>
+          <span>Nº 01 — {pad(count)}</span>
         </div>
       </div>
     </section>
