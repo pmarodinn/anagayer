@@ -6,7 +6,6 @@
 export const brand = {
   name: 'Ana Gayer',
   tagline: 'Doces finos. Por convite.',
-  editionSize: 100, // tiragem total de caixas
 }
 
 // Contatos — preencha para ativar o formulário de convite.
@@ -39,7 +38,6 @@ export const hero = {
     { k: 'Tampa', v: 'Papel algodão, logo em hot stamping' },
     { k: 'Interior', v: 'Veludo laranja Ana Gayer' },
     { k: 'Peças', v: 'Nove, feitas à mão no dia' },
-    { k: 'Tiragem', v: 'Cem caixas numeradas' },
   ],
 }
 

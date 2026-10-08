@@ -236,15 +236,11 @@ function Box({ progress, intro, mobile }) {
         <mesh geometry={g.lidWalls} material={M.paper()} castShadow receiveShadow />
         <mesh geometry={g.lidTop} material={M.paper()} position={[0, LH - 0.05, 0]} castShadow receiveShadow />
         <mesh geometry={g.lidLining} material={M.velvet()} position={[0, LH - 0.052, 0]} rotation-x={Math.PI / 2} />
-        {/* hot stamping: logo + nome + numeração */}
-        <group position={[0, LH + 0.008, -0.12]} rotation-x={-Math.PI / 2}>
+        {/* hot stamping: logo + nome, centralizados na tampa */}
+        <group position={[0, LH + 0.008, 0.065]} rotation-x={-Math.PI / 2}>
           <mesh geometry={g.emblem} material={M.foil()} scale={0.27} position={[0, 0.2, 0]} />
           <Text font={serifFont} fontSize={0.105} letterSpacing={0.52} position={[0.03, -0.46, 0.001]} anchorX="center" anchorY="middle">
             ANA GAYER
-            <primitive object={M.foil()} attach="material" />
-          </Text>
-          <Text font={serifFont} fontSize={0.05} letterSpacing={0.4} position={[0.01, -1.24, 0.001]} anchorX="center" anchorY="middle">
-            Nº 001 / 100
             <primitive object={M.foil()} attach="material" />
           </Text>
         </group>

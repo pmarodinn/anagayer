@@ -14,7 +14,7 @@ A peça central é **A Caixa Nº 01**: uma caixa 3D que se abre com a rolagem e 
 
 ## Editar textos, contatos e vídeos
 
-Tudo fica em [`src/content.js`](src/content.js): textos, número de WhatsApp, Instagram, tiragem e caminhos dos vídeos.
+Tudo fica em [`src/content.js`](src/content.js): textos, número de WhatsApp, Instagram e caminhos dos vídeos.
 
 Os filmes devem ser gerados com IA a partir de [`videos/PROMPTS.md`](videos/PROMPTS.md), com o passo a passo para colocá-los no site.
 
@@ -27,7 +27,7 @@ npm run dev
 
 ## Publicação
 
-Cada `push` na branch `main` publica o site no GitHub Pages ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)). O domínio é definido em `public/CNAME`.
+Cada `push` na branch `main` publica o site no GitHub Pages ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)). O endereço principal é `www.anagayer.com.br` (definido em `public/CNAME` e em *Settings → Pages*); `anagayer.com.br` redireciona para ele.
 
 ### DNS do domínio
 
